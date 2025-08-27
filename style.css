@@ -1,0 +1,30 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+
+header {
+    padding: 2rem;
+    margin-bottom: ;
+
+}
+
+.cell {
+    width: 80px;
+    height: 80px;
+    border: 2px solid purple
+}
+
+
+.cell-container {
+    display: grid;
+    grid-template-columns: 80px 80px 80px;
+    margin: 0 auto;
+    width: fit-content;
+    padding: 1rem;
+}
+
+.game-container {}
