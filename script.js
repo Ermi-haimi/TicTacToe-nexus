@@ -1,5 +1,6 @@
 const cells = document.querySelectorAll('.cell');
 const restartBtn = document.querySelector('.restartButton');
+const gameStatus = document.querySelector('.game-status');
 
 const winningPatterns = [
     [0, 1, 2],
@@ -21,6 +22,7 @@ function startGame() {
     cells.forEach(cell => cell.addEventListener('click', cellClicked));
     restartBtn.addEventListener('click', restartGame);
     isPlaying = true;
+    gameStatus.textContent = `${currentPlayer}'s Turn`;
 
 }
 
@@ -41,6 +43,7 @@ function updateCell(cell, index) {
 
 function changePlayer() {
     currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+    gameStatus.textContent = `${currentPlayer}'s Turn`;
 }
 
 function checkWinner() {
@@ -59,6 +62,11 @@ function checkWinner() {
 
     if (haveAWinner) {
         isPlaying = false;
+        gameStatus.textContent = `${currentPlayer} Won`;
+    } else if (!cellContents.includes('')) {
+        isPlaying = false;
+        gameStatus.textContent = `It is a tie`;
+
     } else {
         changePlayer();
     }
