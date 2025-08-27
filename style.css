@@ -8,7 +8,6 @@
 
 header {
     padding: 2rem;
-    margin-bottom: ;
 
 }
 
@@ -54,4 +53,11 @@ header {
     padding: 1rem;
 }
 
-.game-container {}
+.winning-line {
+    color: green;
+}
+
+.winner {
+    color: rgb(114, 121, 250);
+    font-size: 2rem;
+}

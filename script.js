@@ -65,11 +65,15 @@ function checkWinner() {
         }
         if (cellContents[pattern[0]] === cellContents[pattern[1]] && cellContents[pattern[1]] === cellContents[pattern[2]]) {
             haveAWinner = true;
+            document.querySelector(`[cellIndex='${pattern[0]}']`).classList.add("winning-line");
+            document.querySelector(`[cellIndex='${pattern[1]}']`).classList.add("winning-line");
+            document.querySelector(`[cellIndex='${pattern[2]}']`).classList.add("winning-line");
             break;
         }
     }
 
     if (haveAWinner) {
+        gameStatus.classList.add('winner');
         isPlaying = false;
         gameStatus.textContent = `${currentPlayer} Won`;
         score[currentPlayer] = score[currentPlayer] + 1;
@@ -92,6 +96,7 @@ function restartGame() {
         cell.classList.remove('winning-line')
     });
     gameStatus.textContent = `${currentPlayer}'s Turn`;
+    gameStatus.classList.remove('winner');
     isPlaying = true;
 }
 
