@@ -1,6 +1,7 @@
 const cells = document.querySelectorAll('.cell');
 const restartBtn = document.querySelector('.restartButton');
 const gameStatus = document.querySelector('.game-status');
+const scoreElm = document.querySelector('.score');
 
 const winningPatterns = [
     [0, 1, 2],
@@ -16,6 +17,13 @@ const winningPatterns = [
 let isPlaying = false;
 let currentPlayer = 'X';
 let cellContents = ['', '', '', '', '', '', '', '', ''];
+
+let score = {
+    'X': 0,
+    'O': 0,
+    'tie': 0
+};
+
 startGame();
 
 function startGame() {
@@ -23,6 +31,7 @@ function startGame() {
     restartBtn.addEventListener('click', restartGame);
     isPlaying = true;
     gameStatus.textContent = `${currentPlayer}'s Turn`;
+    updateScore();
 
 }
 
@@ -63,10 +72,13 @@ function checkWinner() {
     if (haveAWinner) {
         isPlaying = false;
         gameStatus.textContent = `${currentPlayer} Won`;
+        score[currentPlayer] = score[currentPlayer] + 1;
+        updateScore();
     } else if (!cellContents.includes('')) {
         isPlaying = false;
         gameStatus.textContent = `It is a tie`;
-
+        score['tie'] = score['tie'] + 1;
+        updateScore();
     } else {
         changePlayer();
     }
@@ -75,7 +87,14 @@ function checkWinner() {
 
 function restartGame() {
     cellContents = ['', '', '', '', '', '', '', '', ''];
-    cells.forEach(cell => cell.textContent = '');
+    cells.forEach(cell => {
+        cell.textContent = '';
+        cell.classList.remove('winning-line')
+    });
+    gameStatus.textContent = `${currentPlayer}'s Turn`;
     isPlaying = true;
+}
 
+function updateScore() {
+    scoreElm.innerHTML = `<p>X : ${score.X} </p>  <p> O : ${score.O} </p> <p>Tie : ${score.tie}</p>`;
 }
