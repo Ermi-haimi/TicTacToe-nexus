@@ -12,17 +12,31 @@ const winningPatterns = [
     [2, 4, 6],
 ];
 
+let isPlaying = false;
+let currentPlayer
 let cellContents = ['', '', '', '', '', '', '', '', ''];
+startGame();
 
 function startGame() {
-
-}
-
-function updateCell() {
+    cells.forEach(cell => cell.addEventListener('click', cellClicked));
+    restartBtn.addEventListener('click', restartGame);
 
 }
 
 function cellClicked() {
+    const index = this.getAttribute('cellIndex');
+
+    if (cellContents[index] != '' || !isPlaying) {
+        return;
+    }
+    updateCell(this, index);
+    checkWinner;
+
+
+}
+
+function updateCell(cell, index) {
+
 
 }
 
