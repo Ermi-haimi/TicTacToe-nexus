@@ -13,13 +13,14 @@ const winningPatterns = [
 ];
 
 let isPlaying = false;
-let currentPlayer
+let currentPlayer = 'X';
 let cellContents = ['', '', '', '', '', '', '', '', ''];
 startGame();
 
 function startGame() {
     cells.forEach(cell => cell.addEventListener('click', cellClicked));
     restartBtn.addEventListener('click', restartGame);
+    isPlaying = true;
 
 }
 
@@ -30,17 +31,37 @@ function cellClicked() {
         return;
     }
     updateCell(this, index);
-    checkWinner;
-
-
+    checkWinner();
 }
 
 function updateCell(cell, index) {
+    cell.textContent = currentPlayer;
+    cellContents[index] = currentPlayer;
+}
 
-
+function changePlayer() {
+    currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
 }
 
 function checkWinner() {
+    let haveAWinner = false;
+    for (let i = 0; i < winningPatterns.length; i++) {
+        const pattern = winningPatterns[i];
+
+        if (cellContents[pattern[0]] === '' || cellContents[pattern[1]] === '' || cellContents[pattern[2]] === '') {
+            continue;
+        }
+        if (cellContents[pattern[0]] === cellContents[pattern[1]] && cellContents[pattern[1]] === cellContents[pattern[2]]) {
+            haveAWinner = true;
+            break;
+        }
+    }
+
+    if (haveAWinner) {
+        isPlaying = false;
+    } else {
+        changePlayer();
+    }
 
 }
 
