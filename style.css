@@ -5,6 +5,10 @@
     text-align: center;
 }
 
+body {
+    font-family: cursive;
+}
+
 
 header {
     padding: 2rem;
@@ -60,4 +64,14 @@ header {
 .winner {
     color: rgb(114, 121, 250);
     font-size: 2rem;
+}
+
+.restartButton {
+    border: none;
+    padding: 0.6rem;
+    background-color: rgb(191, 16, 191);
+    color: white;
+    border-radius: 10px;
+    box-shadow: 2px 4px 2px gainsboro;
+    cursor: pointer;
 }
