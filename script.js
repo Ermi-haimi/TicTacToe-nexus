@@ -74,5 +74,8 @@ function checkWinner() {
 }
 
 function restartGame() {
+    cellContents = ['', '', '', '', '', '', '', '', ''];
+    cells.forEach(cell => cell.textContent = '');
+    isPlaying = true;
 
 }
