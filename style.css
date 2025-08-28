@@ -5,8 +5,23 @@
     text-align: center;
 }
 
+:root {
+    --bg-color: rgb(255, 255, 255);
+    --fon-color: rgb(0, 0, 0);
+    --shadow-color: gainsboro;
+}
+
+.darkMode {
+    --bg-color: rgb(30, 29, 29);
+    --fon-color: rgb(255, 255, 255);
+    --shadow-color: rgb(49, 49, 49);
+}
+
+
 body {
     font-family: cursive;
+    background-color: var(--bg-color);
+    color: var(--fon-color)
 }
 
 
@@ -72,6 +87,20 @@ header {
     background-color: rgb(191, 16, 191);
     color: white;
     border-radius: 10px;
-    box-shadow: 2px 4px 2px gainsboro;
+    box-shadow: 2px 4px 2px var(--shadow-color);
     cursor: pointer;
+}
+
+.dark {
+    position: fixed;
+    top: 30px;
+    right: 20px;
+    background-color: transparent;
+    border: none;
+}
+
+svg {
+    font-size: 99px;
+    fill: var(--fon-color);
+    stroke: var(--fon-color)
 }

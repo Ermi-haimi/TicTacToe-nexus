@@ -2,6 +2,8 @@ const cells = document.querySelectorAll('.cell');
 const restartBtn = document.querySelector('.restartButton');
 const gameStatus = document.querySelector('.game-status');
 const scoreElm = document.querySelector('.score');
+const darkElm = document.querySelector('.dark');
+
 
 const winningPatterns = [
     [0, 1, 2],
@@ -103,3 +105,23 @@ function restartGame() {
 function updateScore() {
     scoreElm.innerHTML = `<p>X : ${score.X} </p>  <p> O : ${score.O} </p> <p>Tie : ${score.tie}</p>`;
 }
+//let darkMode = localStorage.getItem('darkMode');
+
+function enableDark() {
+    document.body.classList.add('darkMode');
+    localStorage.setItem('darkMode', 'enabled');
+}
+
+function disableDark() {
+    document.body.classList.remove('darkMode');
+    localStorage.setItem('darkMode', 'null');
+}
+
+darkElm.addEventListener('click', () => {
+    let darkMode = localStorage.getItem('darkMode');
+    if (darkMode === 'enabled') {
+        disableDark();
+    } else {
+        enableDark();
+    }
+})
