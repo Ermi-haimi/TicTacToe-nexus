@@ -104,3 +104,14 @@ svg {
     fill: var(--fon-color);
     stroke: var(--fon-color)
 }
+
+.resetScore {
+    padding: 0.4rem;
+    margin-top: 0.8rem;
+    border-radius: 6px;
+    border: none;
+    background: rgb(7, 77, 69);
+    color: white;
+    cursor: pointer;
+    box-shadow: 2px 4px 2px var(--shadow-color);
+}
